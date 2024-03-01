@@ -118,6 +118,7 @@ $Title=new DB('titles');
 $Total=new DB('total');
 $Bottom=new DB('bottom');
 $Image=new DB('image');
+$News=new DB('news');
 $Mvim=new DB('mvim');
 $Menu=new DB('menu');
 $Ad=new DB('ad');
