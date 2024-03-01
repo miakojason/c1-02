@@ -18,7 +18,6 @@
 			<div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
 		</div>
 	</div>
-	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
 		<a title="" href="?">
 			<div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div><!--標題-->
@@ -64,12 +63,9 @@
 						<div class="mainmu">
 							選單管理 </div>
 					</a>
-
-
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-					<span class="t">進站總人數 :
-						1 </span>
+					<span class="t">進站總人數 :<?= $Total->find(1)['total']; ?></span>
 				</div>
 			</div>
 			<div class="di" style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -84,14 +80,14 @@
 					</tbody>
 				</table>
 				<?php
-			$do = $_GET['do'] ?? 'title';
-			$file = "./back/{$do}.php";
-			if (file_exists($file)) {
-				include $file;
-			} else {
-				include_once "./back/title.php";
-			}
-			?>
+				$do = $_GET['do'] ?? 'title';
+				$file = "./back/{$do}.php";
+				if (file_exists($file)) {
+					include $file;
+				} else {
+					include_once "./back/title.php";
+				}
+				?>
 			</div>
 			<div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;">
 			</div>
@@ -113,7 +109,7 @@
 		</div>
 		<div style="clear:both;"></div>
 		<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-			<span class="t" style="line-height:123px;"></span>
+			<span class="t" style="line-height:123px;"><?= $Bottom->find(1)['bottom']; ?></span>
 		</div>
 	</div>
 
