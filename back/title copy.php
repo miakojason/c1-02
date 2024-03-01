@@ -14,7 +14,7 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td><input type="button" value="更新圖片" onclick="op('#cover','#cvr','./model/upload.php?table=<?=$do;?>')"></td>
+					<td></td>
 				</tr>
 		</table>
 
