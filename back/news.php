@@ -8,10 +8,43 @@
                 <td width="7%">刪除</td>
                 <td></td>
             </tr>
-            
+            <?php
+            $total = $DB->count();
+            $div = 5;
+            $pages = ceil($total / $div);
+            $now = $_GET['p'] ?? 1;
+            $start = ($now - 1) * $div;
+            $rows = $DB->all(" limit $start,$div");
+            foreach ($rows as $row) {
+            ?>
+                <tr>
+                    <td><textarea name="text[]" id="" cols="30" rows="10"><?= $row['text']; ?></textarea></td>
+                    <td><input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1) ? 'checked' : ''; ?>></td>
+                    <td>
+                        <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
+                        <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+                    </td>
+                    <td><input type="button" value="更新圖片" onclick="op('#cover','#cvr','./model/upload.php?table=<?= $do; ?>&id=<?= $row['id']; ?>')"></td>
+                </tr>
+            <?php
+            }
+            ?>
         </table>
         <div class="cent">
-        
+            <?php
+            if ($now > 1) {
+                $prev = $now - 1;
+                echo "<a href='?do=$do&p=$prev'><</a>";
+            }
+            for ($i = 1; $i <= $pages; $i++) {
+                $fontsize = ($now == $i) ? '24px' : '16px';
+                echo "<a href='?do=$do&p=$i'style='font-size:$fontsize'>$i</a>";
+            }
+            if ($now < $pages) {
+                $next = $now + 1;
+                echo "<a href='?do=$do&p=$next'>></a>";
+            }
+            ?>
         </div>
         <table style="margin-top:40px; width:70%;">
             <tr>
