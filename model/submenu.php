@@ -8,11 +8,21 @@
             <td>次選單連結網址</td>
             <td>刪除</td>
         </tr>
-        <tr>
-            <td><input type="text" name="" id=""></td>
-            <td><input type="text" name="" id=""></td>
-            <td><input type="checkbox" name="" id=""></td>
-        </tr>
+        <?php
+        $opts = $Menu->all(['menu_id' => $_GET['id']]);
+        foreach ($opts as $opt) {
+        ?>
+            <tr>
+                <td><input type="text" name="text[]" value="<?= $opt['text']; ?>"></td>
+                <td><input type="text" name="href[]" value="<?= $opt['href']; ?>"></td>
+                <td>
+                    <input type="hidden" name="id[]" value="<?= $opt['id']; ?>">
+                    <input type="checkbox" name="del[]" value="<?= $opt['id']; ?>">
+                </td>
+            </tr>
+        <?php
+        }
+        ?>
     </table>
     <div>
         <input type="submit" value="修改確定">
@@ -23,8 +33,8 @@
 <script>
     function more() {
         let item = ` <tr>
-            <td><input type="text" name="" id=""></td>
-            <td><input type="text" name="" id=""></td>
+            <td><input type="text" name="add_text[]" id=""></td>
+            <td><input type="text" name="add_href[]" id=""></td>
         </tr>`
         $("#sub").append(item)
     }
