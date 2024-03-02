@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-03-02 10:48:25
+-- 產生時間： 2024-03-02 17:03:08
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -80,7 +80,7 @@ CREATE TABLE `bottom` (
 --
 
 INSERT INTO `bottom` (`id`, `bottom`) VALUES
-(1, '2024頁尾版權');
+(1, '2024頁尾版權3');
 
 -- --------------------------------------------------------
 
@@ -117,12 +117,30 @@ INSERT INTO `image` (`id`, `img`, `sh`) VALUES
 --
 
 CREATE TABLE `menu` (
-  `id` int(10) NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `text` text NOT NULL,
   `href` text NOT NULL,
   `sh` int(1) NOT NULL DEFAULT 1,
   `menu_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `menu`
+--
+
+INSERT INTO `menu` (`id`, `text`, `href`, `sh`, `menu_id`) VALUES
+(1, '網站首頁', './index.php', 1, 0),
+(2, '管理登入', '?do=login', 1, 0),
+(38, '1', '1', 1, 2),
+(39, '2', '2', 1, 2),
+(40, '3', '3', 1, 2),
+(41, '4', '4', 1, 2),
+(42, '5', '6', 1, 2),
+(43, '1', '1', 1, 0),
+(44, '2', '2', 1, 43),
+(45, '4', '4', 1, 43),
+(46, '123123', '1', 1, 0),
+(47, '2', '2', 1, 46);
 
 -- --------------------------------------------------------
 
@@ -213,7 +231,7 @@ CREATE TABLE `total` (
 --
 
 INSERT INTO `total` (`id`, `total`) VALUES
-(1, 5001);
+(1, 1234);
 
 --
 -- 已傾印資料表的索引
@@ -241,6 +259,12 @@ ALTER TABLE `bottom`
 -- 資料表索引 `image`
 --
 ALTER TABLE `image`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `menu`
+--
+ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -294,6 +318,12 @@ ALTER TABLE `bottom`
 --
 ALTER TABLE `image`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `mvim`
