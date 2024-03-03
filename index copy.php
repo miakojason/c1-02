@@ -32,26 +32,24 @@
 					$mainmu = $Menu->all(['sh' => 1, 'menu_id' => 0]);
 					foreach ($mainmu as $main) {
 					?>
-						<div class="mainmu">
-							<a href="<?= $main['href']; ?>"><?= $main['text']; ?></a>
+							<div class="mainmu">
+							<a href="<?= $main['href']; ?>" style="color:black; text-decoration:none;"><?= $main['text']; ?></a>
 							<?php
 							if ($Menu->count(['menu_id' => $main['id']]) > 0) {
-							?>
-								<div class="mw">
-									<?php
-									$opts = $Menu->all(['menu_id' => $main['id']]);
-									foreach ($opts as $opt) {
+								echo "<div class='mw'>";
+								?>
+								<?php
+								$subs = $Menu->all(['menu_id' => $main['id']]);
+								foreach ($subs as $sub) {
 									?>
-										<a href="<?= $opt['href']; ?>">
-											<div class="mainmu2">
-												<?= $opt['text']; ?>
-											</div>
-										</a>
+									<a href="<?=$sub['href'];?>">
+									<div class='mainmu2'>
+									<?=$sub['text'];?>
+									</div>
+									</a>
 									<?php
-									}
-									?>
-								</div>
-							<?php
+								}
+								echo "</div>";
 							}
 							?>
 						</div>
