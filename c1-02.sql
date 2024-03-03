@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-03-02 17:03:08
+-- 產生時間： 2024-03-03 15:28:47
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -140,7 +140,8 @@ INSERT INTO `menu` (`id`, `text`, `href`, `sh`, `menu_id`) VALUES
 (44, '2', '2', 1, 43),
 (45, '4', '4', 1, 43),
 (46, '123123', '1', 1, 0),
-(47, '2', '2', 1, 46);
+(47, '2', '2', 1, 46),
+(48, '更多消息', '?do=nres', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -231,7 +232,7 @@ CREATE TABLE `total` (
 --
 
 INSERT INTO `total` (`id`, `total`) VALUES
-(1, 1234);
+(1, 1236);
 
 --
 -- 已傾印資料表的索引
@@ -323,7 +324,7 @@ ALTER TABLE `image`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `mvim`
