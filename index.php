@@ -21,7 +21,7 @@
 	</div>
 	<div id="main">
 		<a title="" href="./index.php">
-			<div class="ti" style="background:url(./img/<?=$Title->find(['sh'=>1])['img'];?>); background-size:cover;"></div><!--標題-->
+			<div class="ti" style="background:url(./img/<?= $Title->find(['sh' => 1])['img']; ?>); background-size:cover;"></div><!--標題-->
 		</a>
 		<div id="ms">
 			<div id="lf" style="float:left;">
@@ -64,16 +64,28 @@
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="location.href='?do=login'">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<div class="cent" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
+					<?php
+					$imgs = $Image->all(['sh' => 1]);
+					foreach ($imgs as $idx => $img) {
+					?>
+						<div id="ssaa<?= $idx; ?>" class="im cent">
+							<img src="./img/<?= $img['img']; ?>" style="width:150px;height:103px">
+						</div>
+					<?php
+					}
+					?>
+					<div class="cent" onclick="pp(2)"><img src="./icon/dn.jpg" a=""></div>
 					<script>
-						var nowpage = 0,
-							num = 0;
+						var nowpage = 1,
+							num = <?=$Image->count(['sh'=>1]);?>;
 
 						function pp(x) {
 							var s, t;
 							if (x == 1 && nowpage - 1 >= 0) {
 								nowpage--;
 							}
-							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+							if (x == 2 && nowpage< (num - 3)) {
 								nowpage++;
 							}
 							$(".im").hide()
